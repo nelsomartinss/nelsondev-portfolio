@@ -16,9 +16,6 @@ const pt = {
     closeMenu: "Fechar menu",
     skipToContent: "Pular para o conteúdo",
   },
-  theme: {
-    toggle: "Alternar tema claro/escuro",
-  },
   locale: {
     switchTo: "Mudar idioma para inglês",
   },

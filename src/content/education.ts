@@ -12,29 +12,29 @@ export type Education = {
 export const education: Education[] = [
   {
     title: {
-      pt: "Bacharelado em Ciência da Computação",
+      pt: "Graduação em Análise e Desenvolvimento de Sistemas",
       en: "B.Sc. in Computer Science",
     },
-    institution: "Universidade Exemplo",
-    period: "2020 — 2024",
+    institution: " Centro Universitário de João Pessoa.",
+    period: "2023 — 2025",
     status: "completed",
   },
   {
     title: {
-      pt: "Pós-graduação em Inteligência Artificial",
-      en: "Postgraduate degree in Artificial Intelligence",
+      pt: "Responsive Web Design",
+      en: "Responsive Web Design",
     },
-    institution: "Instituto Exemplo",
-    period: "2025 — 2026",
-    status: "inProgress",
-  },
-  {
-    title: {
-      pt: "Certificação em Desenvolvimento Web",
-      en: "Web Development Certification",
-    },
-    institution: "Plataforma Exemplo",
+    institution: "Free Code Camp",
     period: "2024",
     status: "completed",
+  },
+  {
+    title: {
+      pt: "curso.dev/ia",
+      en: "curso.dev/ia",
+    },
+    institution: "curso.dev",
+    period: "2026",
+    status: "inProgress",
   },
 ];

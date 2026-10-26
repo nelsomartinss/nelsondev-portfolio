@@ -14,52 +14,32 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
-    role: { pt: "Desenvolvedor Fullstack", en: "Fullstack Developer" },
-    company: "Empresa Atual",
-    location: { pt: "Remoto", en: "Remote" },
-    start: "2024",
+    role: { pt: "Desenvolvedor Júnior I", en: "Junior Developer I" },
+    company: "JSD Telecom",
+    location: { pt: "João Pessoa, PB", en: "João Pessoa, Brazil" },
+    start: "2025",
     bullets: {
       pt: [
-        "Desenvolvo features ponta a ponta em Next.js e Node.js para milhares de usuários.",
-        "Integrei LLMs ao produto (resumos, busca semântica e assistentes) com avaliação de qualidade contínua.",
-        "Adotei agentes de código no fluxo do time, reduzindo o tempo de revisão de PRs.",
+        "Desenvolvo features ponta a ponta em React, Node.js e PHP para diversos usuários.",
       ],
       en: [
-        "Build end-to-end features in Next.js and Node.js for thousands of users.",
-        "Integrated LLMs into the product (summaries, semantic search and assistants) with continuous quality evals.",
-        "Brought coding agents into the team workflow, cutting PR review time.",
+        "I develop end-to-end features using React, Node.js, and PHP for a variety of users.",
       ],
     },
   },
   {
-    role: { pt: "Desenvolvedor Frontend", en: "Frontend Developer" },
-    company: "Empresa Anterior",
-    location: { pt: "São Paulo, SP", en: "São Paulo, Brazil" },
-    start: "2022",
-    end: "2024",
+    role: { pt: "Desenvolvedor Backend", en: "Backend Developer" },
+    company: "Fábrica de Software UBTech Office/Unipê",
+    location: { pt: "João Pessoa, PB", en: "João Pessoa, Brazil" },
+    start: "Jan - 2023",
+    end: "Julh - 2023",
     bullets: {
       pt: [
-        "Construí um design system em React usado por 4 produtos.",
-        "Melhorei o Core Web Vitals das páginas principais em mais de 40%.",
+        "Atuei no desenvolvimento de soluções de software voltadas para demandas reais de clientes, colaborando com a equipe da Fábrica de Software do UBTech Office/UNIPÊ.",
       ],
       en: [
-        "Built a React design system used across 4 products.",
-        "Improved Core Web Vitals on key pages by over 40%.",
+        "I worked on the development of software solutions tailored to real client needs, collaborating with the Software Factory team at the UBTech Office/UNIPÊ.",
       ],
-    },
-  },
-  {
-    role: {
-      pt: "Estagiário de Desenvolvimento",
-      en: "Software Development Intern",
-    },
-    company: "Primeira Empresa",
-    location: { pt: "Híbrido", en: "Hybrid" },
-    start: "2021",
-    end: "2022",
-    bullets: {
-      pt: ["Automatizei rotinas internas com scripts em Python e APIs REST."],
-      en: ["Automated internal routines with Python scripts and REST APIs."],
     },
   },
 ];

@@ -23,8 +23,6 @@ export function PointerGlow() {
     let height = 0;
     let raf = 0;
     let color = "";
-    // Dark glyphs on a white page need more weight to read as clearly.
-    let alpha = 0.55;
     // Smoothed position trails the real pointer; intensity fades in and out.
     const target = { x: -999, y: -999 };
     const pos = { x: -999, y: -999 };
@@ -34,7 +32,6 @@ export function PointerGlow() {
     const readStyle = () => {
       const style = getComputedStyle(canvas);
       color = style.color;
-      alpha = document.documentElement.classList.contains("dark") ? 0.55 : 0.8;
       ctx.font = `${Math.round(CELL_H * 0.8)}px ${style.fontFamily}`;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
@@ -73,7 +70,7 @@ export function PointerGlow() {
           // Cheap per-cell shimmer from a stable hash of the cell position.
           const seed = Math.sin(c * 12.9898 + r * 78.233) * 43758.5453;
           const shimmer = 0.75 + 0.25 * Math.sin(time * 0.004 + seed);
-          ctx.globalAlpha = g * shimmer * intensity * alpha;
+          ctx.globalAlpha = g * shimmer * intensity * 0.55;
           ctx.fillText(
             RAMP[Math.min(RAMP.length - 1, Math.floor(g * RAMP.length))],
             cx,
@@ -109,22 +106,17 @@ export function PointerGlow() {
     const onLeave = () => {
       active = false;
     };
-    const themeObserver = new MutationObserver(readStyle);
 
     resize();
     window.addEventListener("resize", resize);
     window.addEventListener("pointermove", onMove, { passive: true });
     document.documentElement.addEventListener("pointerleave", onLeave);
-    themeObserver.observe(document.documentElement, {
-      attributeFilter: ["class"],
-    });
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
       window.removeEventListener("pointermove", onMove);
       document.documentElement.removeEventListener("pointerleave", onLeave);
-      themeObserver.disconnect();
     };
   }, []);
 

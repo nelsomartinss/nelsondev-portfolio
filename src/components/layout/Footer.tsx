@@ -12,9 +12,12 @@ export async function Footer() {
           ☕
         </span>{" "}
         {footer.and}{" "}
-        <span className="inline-flex items-center gap-1 align-middle whitespace-nowrap text-fg">
+        <span
+          role="img"
+          aria-label="Claude"
+          className="inline-block align-[-2px]"
+        >
           <ClaudeSpark className="size-4" />
-          Claude
         </span>
       </p>
     </footer>

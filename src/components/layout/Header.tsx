@@ -5,11 +5,10 @@ import { useEffect, useState } from "react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { LocaleSwitcher } from "./LocaleSwitcher";
-import { ThemeToggle } from "./ThemeToggle";
 
 type Props = {
   locale: Locale;
-  dict: Pick<Dictionary, "nav" | "theme" | "locale">;
+  dict: Pick<Dictionary, "nav" | "locale">;
   handle: string;
 };
 
@@ -61,7 +60,6 @@ export function Header({ locale, dict, handle }: Props) {
 
         <div className="flex items-center">
           <LocaleSwitcher current={locale} label={dict.locale.switchTo} />
-          <ThemeToggle label={dict.theme.toggle} />
           <button
             type="button"
             className="inline-flex size-11 items-center justify-center rounded-md text-muted hover:bg-surface hover:text-fg md:hidden"

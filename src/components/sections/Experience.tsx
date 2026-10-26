@@ -24,11 +24,12 @@ export async function Experience() {
           cell={6}
           cycle
           fade="none"
-          className="top-[40%] right-[max(1rem,calc((100vw_-_64rem)/2))] hidden size-[26rem] opacity-85 lg:block dark:opacity-70"
+          className="top-[42%] right-[max(1rem,calc((100vw_-_64rem)/2))] hidden size-[20rem] opacity-70 lg:block"
         />
       }
     >
-      <ol className="relative ml-1.5 border-l border-border">
+      {/* From lg up the folder sits on the right; keep the timeline clear of it. */}
+      <ol className="relative ml-1.5 border-l border-border lg:max-w-[calc(100%_-_21.5rem)]">
         {experience.map((job, i) => (
           <li
             key={`${job.company}-${job.start}`}

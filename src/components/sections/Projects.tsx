@@ -25,13 +25,13 @@ export async function Projects() {
             mode="binary"
             cell={8}
             align="right"
-            className="top-[8%] left-0 hidden h-[60%] w-[calc((100vw_-_64rem)/2_+_6rem)] opacity-90 xl:block dark:opacity-50"
+            className="top-[8%] left-0 hidden h-[60%] w-[calc((100vw_-_64rem)/2_+_6rem)] opacity-50 xl:block"
           />
           <Figure
             src="/figures/chip.svg"
             mode="ascii"
             cell={8}
-            className="top-[58%] right-[-25%] size-[min(90vw,520px)] -translate-y-1/2 opacity-90 sm:right-[2%] lg:right-[6%] dark:opacity-40"
+            className="top-[58%] right-[2%] hidden size-[min(90vw,520px)] -translate-y-1/2 opacity-40 md:block lg:right-[6%]"
           />
         </>
       }

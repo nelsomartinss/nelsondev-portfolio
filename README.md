@@ -1,72 +1,143 @@
+```text
+                                       .'`:-~-:'
+                   `:/[[u[~-:`. .`:~[oNNNNNN8888~.
+                :[PPPPPPPoouu[//[uPPPou//~--^.-N8~
+              :PNNNNNNNNNPPoou[[~-:^.       ~~88N'
+            'uNN8888888NNNPPPu/~~~~-^.    '[oNNo'
+           .oN888MMMMM888Nou[uuu[/~-:^  `/oNNP:
+           /NN88MMM@@M8PouoPPPou[/-:^^~uPPNo-
+          ^PNN88888NNPPN8NNPPou/~:^:[oPPP/`
+       ^[NNPPPoooPN88888NNNou/-^-/uooou:.
+     -P888o[uoPNNNNNNNNPu[~::-/uooou-^.
+   -N88Nu^ .uoPPPPouu[~-:-~/uuu[~:^`^`
+ 'PMMPu`    '/[///---~/uouu/-^`^:::^`
+'M@M-/       .:~[[uoPoo/:``^-~--::^'
+/@8- ^~~/[[oPNNNNNo/:``:-~~--:::`.
+ ~M@@MMMM888P[~:`.  '^^:::^`'..
+   ':~~:^'.
+```
+
 # nelson.dev
 
-Portfólio pessoal de um desenvolvedor de software: fullstack, com foco em IA.
+> `~/nelson $ whoami`: portfólio de um desenvolvedor fullstack com foco em IA.
 
-Interface minimalista "text-first" no estilo GitHub, com figuras de fundo desenhadas em ASCII, binário e halftone num `<canvas>`.
+Interface minimalista e _text-first_, no espírito do GitHub, sobre um fundo de figuras desenhadas com caracteres. O Saturno acima é o mesmo da página inicial, gerado a partir de [`public/figures/saturn.svg`](public/figures/saturn.svg). No site ele se monta caractere por caractere, fica alguns segundos e se desfaz como poeira.
+
+**Next.js 16** · **TypeScript** · **Tailwind CSS v4** · **Canvas 2D** · **PT / EN**
+
+---
+
+## Destaques
+
+- **Figuras em ASCII, binário e halftone** desenhadas em tempo real num `<canvas>` a partir de imagens em tons de cinza.
+- **Saturno e pasta animados**, que se formam e se desfazem em loop. Perto do mouse, os caracteres se afastam, brilham e embaralham.
+- **Brilho que segue o mouse pela página inteira**, feito com uma grade de caracteres fixa atrás do conteúdo.
+- **Bilíngue (PT/EN)**: a raiz redireciona pelo idioma do navegador, e trocar de idioma mantém a seção atual.
+- **Responsivo**: no celular ficam só o Saturno e as mãos, para o conteúdo respirar.
+- **Contatos práticos**: copiar número e e-mail, abrir no WhatsApp, links para LinkedIn e GitHub.
+- **Acessível e leve**: páginas estáticas, animações pausadas fora da tela e respeito a `prefers-reduced-motion`.
 
 ## Stack
 
-- [Next.js 16](https://nextjs.org) (App Router, Cache Components) + TypeScript
-- [Tailwind CSS v4](https://tailwindcss.com): tokens de tema em `src/app/globals.css`
-- i18n nativo do Next (`proxy.ts` + `next/root-params`): rotas `/pt` e `/en`
-- Fontes: Geist (texto) e JetBrains Mono (UI de terminal)
+| Camada    | Escolha                                                                      |
+| --------- | ---------------------------------------------------------------------------- |
+| Framework | [Next.js 16](https://nextjs.org) (App Router, Cache Components)              |
+| Linguagem | TypeScript (strict)                                                          |
+| Estilo    | [Tailwind CSS v4](https://tailwindcss.com), paleta GitHub Dark em tokens CSS |
+| i18n      | nativo do Next: `proxy.ts` + `next/root-params`, rotas `/pt` e `/en`         |
+| Fontes    | Geist (texto) e JetBrains Mono (interface de terminal)                       |
+| Ícones    | [lucide-react](https://lucide.dev) + SVGs de marca inline                    |
 
-## Rodando
+## Rodando localmente
+
+Requer Node.js 20+.
 
 ```bash
 npm install
-npm run dev     # http://localhost:3000
-npm run build   # build de produção
-npm run lint
-npm run format
+npm run dev      # http://localhost:3000
+```
+
+| Script           | O que faz                        |
+| ---------------- | -------------------------------- |
+| `npm run dev`    | servidor de desenvolvimento      |
+| `npm run build`  | build de produção                |
+| `npm run start`  | serve o build de produção        |
+| `npm run lint`   | ESLint                           |
+| `npm run format` | Prettier (com ordem do Tailwind) |
+
+## Estrutura
+
+```text
+src/
+├── app/
+│   ├── [locale]/          # layout e página, gerados para /pt e /en
+│   ├── globals.css        # paleta e utilitários
+│   ├── sitemap.ts, robots.ts, icon.svg
+├── components/
+│   ├── ascii/             # motor das figuras (AsciiCanvas, renderers, PointerGlow)
+│   ├── layout/            # Header, Footer, LocaleSwitcher
+│   ├── sections/          # Hero, Projects, Experience, Education, About, Contact
+│   └── ui/                # Section, Card, Tag, Button, CopyButton, Typewriter
+├── content/               # todo o conteúdo do site (PT e EN)
+├── i18n/                  # idiomas e dicionários da interface
+└── proxy.ts               # redireciona / para o idioma do navegador
+public/figures/            # imagens-fonte das figuras
+scripts/prepare-figures.py # prepara a imagem das mãos
 ```
 
 ## Editando o conteúdo
 
-Todo o conteúdo fica em `src/content/`, com campos traduzidos (`{ pt, en }`):
+Todo o texto do site fica em dois lugares. Nenhum componente precisa ser alterado.
 
-| Arquivo         | O quê                                              |
-| --------------- | -------------------------------------------------- |
-| `profile.ts`    | nome, cargo, resumo, sobre mim, stack, URL do site |
-| `projects.ts`   | projetos (marque `ai: true` para o selo de IA)     |
-| `experience.ts` | experiências (sem `end` = emprego atual)           |
-| `education.ts`  | formação acadêmica e certificações                 |
-| `contact.ts`    | WhatsApp, e-mail, LinkedIn e GitHub                |
+| Arquivo                            | O quê                                                |
+| ---------------------------------- | ---------------------------------------------------- |
+| `src/content/profile.ts`           | nome, cargo, resumo, "sobre mim", stack, URL do site |
+| `src/content/projects.ts`          | projetos (`ai: true` exibe o selo de IA)             |
+| `src/content/experience.ts`        | experiências (sem `end` = emprego atual)             |
+| `src/content/education.ts`         | formação acadêmica e certificações                   |
+| `src/content/contact.ts`           | WhatsApp, e-mail, LinkedIn e GitHub                  |
+| `src/i18n/dictionaries/{pt,en}.ts` | textos da interface: menu, botões, títulos, rodapé   |
 
-Os textos da interface (menus, botões, rodapé) ficam em `src/i18n/dictionaries/`.
+Os campos traduzidos usam o formato `{ pt: "...", en: "..." }`.
 
-Defina `NEXT_PUBLIC_SITE_URL` no deploy para gerar sitemap e metadados com o domínio certo.
+## Figuras em ASCII
 
-## Figuras de fundo
+[`AsciiCanvas`](src/components/ascii/AsciiCanvas.tsx) carrega uma imagem de `public/figures/` e mede o brilho de cada célula de uma grade. Depois redesenha cada célula num destes modos: quanto mais clara a área, mais denso o caractere ou maior o ponto.
 
-`src/components/ascii/AsciiCanvas.tsx` lê uma imagem de `public/figures/`, amostra a luminância numa grade e redesenha cada célula de acordo com o modo escolhido:
+| `mode`     | Resultado                                  |
+| ---------- | ------------------------------------------ |
+| `ascii`    | caracteres de uma rampa, como ` .:-=+*#%@` |
+| `binary`   | dígitos 0/1 que alternam devagar           |
+| `halftone` | pontos com raio proporcional ao brilho     |
 
-| `mode`     | Resultado                              |
-| ---------- | -------------------------------------- |
-| `ascii`    | caracteres da rampa ` .:-=+*#%@`       |
-| `binary`   | dígitos 0/1                            |
-| `halftone` | pontos com raio proporcional ao brilho |
+Com `cycle`, os caracteres chegam de posições aleatórias, formam a figura, ficam alguns segundos e se dispersam, em loop.
 
-As figuras são imagens em tons de cinza (SVG ou PNG): quanto mais claro, mais denso. Para criar outra, basta passá-la para `<Figure src=… mode=… />`.
+| Figura          | Seção       | Modo              | Celular |
+| --------------- | ----------- | ----------------- | :-----: |
+| `saturn.svg`    | início      | `ascii` + `cycle` |   sim   |
+| `satellite.svg` | projetos    | `binary`          |   não   |
+| `chip.svg`      | projetos    | `ascii`           |   não   |
+| `folder.svg`    | experiência | `ascii` + `cycle` |   não   |
+| `eye.svg`       | sobre       | `ascii`           |   não   |
+| `hands.png`     | contatos    | `halftone`        |   sim   |
 
-| Figura          | Seção           | Origem                                          |
-| --------------- | --------------- | ----------------------------------------------- |
-| `saturn.svg`    | início          | desenho autoral, ASCII que se forma e se desfaz |
-| `satellite.svg` | projetos (esq.) | desenho autoral, em binário 0/1                 |
-| `chip.svg`      | projetos (dir.) | desenho autoral                                 |
-| `folder.svg`    | experiência     | desenho autoral, ASCII que se forma e se desfaz |
-| `eye.svg`       | sobre           | desenho autoral                                 |
-| `hands.png`     | contatos        | imagem das mãos ("Criação de Adão")             |
+Os SVGs são desenhos autorais. Para criar uma figura nova, basta desenhar uma imagem em tons de cinza com fundo transparente e usá-la num `<Figure src="…" mode="…" />`.
 
-O Saturno e a pasta usam `cycle` no `AsciiCanvas`: os caracteres chegam de posições aleatórias, formam a figura, ficam alguns segundos e se dispersam, em loop. Perto do mouse eles são empurrados, brilham e embaralham.
-
-Para regerar a imagem das mãos a partir de outra fonte, use `scripts/prepare-figures.py`:
+Para regerar a imagem das mãos a partir de outra fonte:
 
 ```bash
 pip install pillow
 python scripts/prepare-figures.py --hands maos.png
 ```
 
-O brilho que segue o mouse pela página inteira é o `PointerGlow`, uma grade de caracteres fixa atrás do conteúdo.
+## Deploy
 
-A animação pausa fora da tela e respeita `prefers-reduced-motion`.
+O projeto funciona na [Vercel](https://vercel.com) sem configuração extra. Defina a variável de ambiente abaixo para o sitemap e os metadados usarem o domínio certo:
+
+```bash
+NEXT_PUBLIC_SITE_URL=https://seu-dominio.com
+```
+
+---
+
+<p align="center"><sub>feito com ☕ e Claude</sub></p>

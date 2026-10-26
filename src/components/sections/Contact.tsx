@@ -55,7 +55,7 @@ export async function Contact() {
           mode="halftone"
           cell={7}
           fade="sides"
-          className="inset-x-0 top-28 h-24 opacity-90 sm:top-40 sm:h-60 dark:opacity-70"
+          className="inset-x-0 top-28 h-24 opacity-70 sm:top-40 sm:h-60"
         />
       }
     >

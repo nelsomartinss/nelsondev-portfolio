@@ -1,22 +1,7 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-/* Light (GitHub light) */
+/* GitHub dark */
 :root {
-  --bg: #ffffff;
-  --surface: #f6f8fa;
-  --border: #d0d7de;
-  --fg: #1f2328;
-  --muted: #656d76;
-  --accent: #1a7f37;
-  --accent-fg: #ffffff;
-  --figure: #1f2328;
-  color-scheme: light;
-}
-
-/* Dark (GitHub dark) — default */
-.dark {
   --bg: #0d1117;
   --surface: #161b22;
   --border: #30363d;

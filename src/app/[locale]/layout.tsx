@@ -3,7 +3,6 @@ import { Geist, JetBrains_Mono } from "next/font/google";
 import { PointerGlow } from "@/components/ascii/PointerGlow";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
-import { themeScript } from "@/components/layout/ThemeToggle";
 import { profile, site } from "@/content/profile";
 import { htmlLang, locales } from "@/i18n/config";
 import { getDictionary, getLocale } from "@/i18n/dictionaries";
@@ -42,10 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export const viewport: Viewport = {
   viewportFit: "cover",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d1117" },
-  ],
+  themeColor: "#0d1117",
 };
 
 export default async function RootLayout({
@@ -56,12 +52,8 @@ export default async function RootLayout({
   return (
     <html
       lang={htmlLang[locale]}
-      className={`dark ${geist.variable} ${jetbrains.variable} antialiased`}
-      suppressHydrationWarning
+      className={`${geist.variable} ${jetbrains.variable} antialiased`}
     >
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
       {/* Extensions (e.g. ColorZilla) add attributes to <body> before hydration. */}
       <body className="flex min-h-svh flex-col" suppressHydrationWarning>
         <a
@@ -73,7 +65,7 @@ export default async function RootLayout({
         <Header
           locale={locale}
           handle={profile.handle}
-          dict={{ nav: dict.nav, theme: dict.theme, locale: dict.locale }}
+          dict={{ nav: dict.nav, locale: dict.locale }}
         />
         <main id="conteudo" className="flex-1">
           {children}

@@ -129,12 +129,6 @@ export function AsciiCanvas({
       visible = entry.isIntersecting;
       start();
     });
-    // Theme switches change the canvas color via the .dark class on <html>.
-    const themeObserver = new MutationObserver(() => {
-      readStyle();
-      render(performance.now());
-    });
-
     const onPointerMove = (e: PointerEvent) => {
       if (e.pointerType !== "mouse") return;
       const rect = canvas.getBoundingClientRect();
@@ -150,9 +144,6 @@ export function AsciiCanvas({
       layout();
       resizeObserver.observe(canvas);
       viewObserver.observe(canvas);
-      themeObserver.observe(document.documentElement, {
-        attributeFilter: ["class"],
-      });
       reduceMotion.addEventListener("change", start);
       if (interactive) {
         window.addEventListener("pointermove", onPointerMove, {
@@ -168,7 +159,6 @@ export function AsciiCanvas({
       cancelAnimationFrame(raf);
       resizeObserver.disconnect();
       viewObserver.disconnect();
-      themeObserver.disconnect();
       reduceMotion.removeEventListener("change", start);
       window.removeEventListener("pointermove", onPointerMove);
       document.removeEventListener("pointerleave", onPointerLeave);

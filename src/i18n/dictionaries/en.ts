@@ -18,9 +18,6 @@ const en: Dictionary = {
     closeMenu: "Close menu",
     skipToContent: "Skip to content",
   },
-  theme: {
-    toggle: "Toggle light/dark theme",
-  },
   locale: {
     switchTo: "Switch language to Portuguese",
   },

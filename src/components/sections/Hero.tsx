@@ -21,7 +21,7 @@ export async function Hero() {
         {/* Saturn: above the text on mobile, in its own column (bleeding to the right edge) from lg up. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none relative h-72 opacity-85 sm:h-96 lg:order-last lg:h-[min(80vh,680px)] lg:w-[calc(100%_+_min(12rem,max(1.5rem,(100vw_-_64rem)_/_2_+_1.5rem)))] dark:opacity-90"
+          className="pointer-events-none relative h-72 opacity-90 sm:h-96 lg:order-last lg:h-[min(80vh,680px)] lg:w-[calc(100%_+_min(12rem,max(1.5rem,(100vw_-_64rem)_/_2_+_1.5rem)))]"
         >
           <AsciiCanvas
             src="/figures/saturn.svg"

@@ -2,11 +2,11 @@
 
 export const contact = {
   /** Digits only, with country code — used for wa.me links. */
-  whatsapp: "5500000000000",
+  whatsapp: "5583996442273",
   /** How the number is shown and copied. */
-  whatsappDisplay: "+55 (00) 00000-0000",
-  email: "voce@exemplo.com",
-  linkedin: "https://www.linkedin.com/in/seu-usuario",
+  whatsappDisplay: "+55 (83) 99644-2273",
+  email: "nelsonmartinsjp2001@gmail.com",
+  linkedin: "https://www.linkedin.com/in/nelsomartinss",
   github: "https://github.com/nelsomartinss",
 };
 

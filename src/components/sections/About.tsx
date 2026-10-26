@@ -15,7 +15,7 @@ export async function About() {
           src="/figures/eye.svg"
           mode="ascii"
           cell={7}
-          className="inset-x-0 top-1/2 h-[85%] -translate-y-1/2 opacity-30 dark:opacity-[0.18]"
+          className="inset-x-0 top-1/2 hidden h-[85%] -translate-y-1/2 opacity-[0.18] md:block"
         />
       }
     >
