@@ -6,7 +6,7 @@ export async function Footer() {
 
   return (
     <footer className="border-t border-border py-8">
-      <p className="container-page text-center font-mono text-sm text-muted">
+      <p className="container-page text-center text-sm text-muted">
         {footer.madeWith}{" "}
         <span role="img" aria-label={footer.coffee}>
           ☕

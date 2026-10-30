@@ -1,5 +1,3 @@
-// TODO: replace the placeholders below with your real contact data.
-
 export const contact = {
   /** Digits only, with country code — used for wa.me links. */
   whatsapp: "5583996442273",

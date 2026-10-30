@@ -1,7 +1,5 @@
 import type { Localized } from "@/i18n/config";
 
-// TODO: replace the placeholder education with your own.
-
 export type Education = {
   title: Localized;
   institution: string;
@@ -13,9 +11,9 @@ export const education: Education[] = [
   {
     title: {
       pt: "Graduação em Análise e Desenvolvimento de Sistemas",
-      en: "B.Sc. in Computer Science",
+      en: "Associate Degree in Systems Analysis and Development",
     },
-    institution: " Centro Universitário de João Pessoa.",
+    institution: "Centro Universitário de João Pessoa",
     period: "2023 — 2025",
     status: "completed",
   },

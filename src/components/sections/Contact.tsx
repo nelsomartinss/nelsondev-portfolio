@@ -1,6 +1,5 @@
 import { ExternalLink, Mail } from "lucide-react";
 import type { ReactNode } from "react";
-import { Figure } from "@/components/ascii/Figure";
 import {
   GithubIcon,
   LinkedinIcon,
@@ -32,7 +31,7 @@ function ContactCard({
         </span>
         <div className="min-w-0">
           <h3 className="text-sm font-semibold">{label}</h3>
-          <p className="truncate font-mono text-sm text-muted">{value}</p>
+          <p className="truncate text-sm text-muted">{value}</p>
         </div>
       </div>
       <div className="mt-auto flex flex-wrap gap-2">{children}</div>
@@ -46,22 +45,8 @@ export async function Contact() {
   const iconClass = "size-5";
 
   return (
-    <Section
-      id="contato"
-      title={dict.sections.contact}
-      background={
-        <Figure
-          src="/figures/hands.png"
-          mode="halftone"
-          cell={7}
-          fade="sides"
-          className="inset-x-0 top-28 h-24 opacity-70 sm:top-40 sm:h-60"
-        />
-      }
-    >
-      <p className="mb-8 max-w-xl pt-24 text-base text-muted sm:pt-60 sm:text-lg">
-        {t.intro}
-      </p>
+    <Section id="contato" title={dict.sections.contact}>
+      <p className="mb-6 max-w-xl text-base text-muted sm:text-lg">{t.intro}</p>
 
       <ul className="grid gap-4 sm:grid-cols-2">
         <li>

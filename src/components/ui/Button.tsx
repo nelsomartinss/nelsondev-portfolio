@@ -3,7 +3,7 @@ import type { ComponentProps } from "react";
 type Variant = "primary" | "secondary";
 
 const base =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border px-4 font-mono text-sm font-medium transition-colors";
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-md border px-4 text-sm font-medium transition-colors";
 
 const variants: Record<Variant, string> = {
   primary: "border-accent bg-accent text-accent-fg hover:opacity-90",

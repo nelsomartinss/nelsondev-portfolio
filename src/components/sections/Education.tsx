@@ -26,9 +26,7 @@ export async function Education() {
               </div>
             </div>
             <div className="flex items-center gap-3 pl-8 sm:pl-0">
-              <span className="font-mono text-xs text-muted">
-                {item.period}
-              </span>
+              <span className="text-sm text-muted">{item.period}</span>
               <Tag accent={item.status === "inProgress"}>
                 {dict.education[item.status]}
               </Tag>

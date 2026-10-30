@@ -9,7 +9,7 @@ export function Tag({
 }) {
   return (
     <span
-      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 font-mono text-xs ${
+      className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-medium ${
         accent ? "border-accent/50 text-accent" : "border-border text-muted"
       }`}
     >

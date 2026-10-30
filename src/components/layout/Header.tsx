@@ -5,14 +5,15 @@ import { useEffect, useState } from "react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries";
 import { LocaleSwitcher } from "./LocaleSwitcher";
+import { ThemeToggle } from "./ThemeToggle";
 
 type Props = {
   locale: Locale;
-  dict: Pick<Dictionary, "nav" | "locale">;
-  handle: string;
+  dict: Pick<Dictionary, "nav" | "theme" | "locale">;
+  name: string;
 };
 
-export function Header({ locale, dict, handle }: Props) {
+export function Header({ locale, dict, name }: Props) {
   const [open, setOpen] = useState(false);
   const { nav } = dict;
   const links = [
@@ -35,16 +36,14 @@ export function Header({ locale, dict, handle }: Props) {
       <div className="container-page flex h-14 items-center justify-between gap-4">
         <a
           href="#inicio"
-          className="flex min-h-11 items-center font-mono text-sm font-semibold"
+          className="flex min-h-11 items-center text-sm font-semibold"
           onClick={() => setOpen(false)}
         >
-          <span className="text-accent">~/</span>
-          {handle}
-          <span className="animate-blink text-accent">_</span>
+          {name}
         </a>
 
         <nav aria-label={nav.label} className="hidden md:block">
-          <ul className="flex items-center gap-1 font-mono text-sm">
+          <ul className="flex items-center gap-1 text-sm">
             {links.map((l) => (
               <li key={l.href}>
                 <a
@@ -60,6 +59,7 @@ export function Header({ locale, dict, handle }: Props) {
 
         <div className="flex items-center">
           <LocaleSwitcher current={locale} label={dict.locale.switchTo} />
+          <ThemeToggle label={dict.theme.toggle} />
           <button
             type="button"
             className="inline-flex size-11 items-center justify-center rounded-md text-muted hover:bg-surface hover:text-fg md:hidden"
@@ -83,7 +83,7 @@ export function Header({ locale, dict, handle }: Props) {
         hidden={!open}
         className="border-t border-border md:hidden"
       >
-        <ul className="container-page py-2 font-mono text-sm">
+        <ul className="container-page py-2 text-sm">
           {links.map((l) => (
             <li key={l.href}>
               <a

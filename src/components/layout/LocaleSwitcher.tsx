@@ -24,7 +24,7 @@ export function LocaleSwitcher({
       onClick={keepHash}
       aria-label={label}
       title={label}
-      className="inline-flex h-11 min-w-11 items-center justify-center gap-1 rounded-md px-2 font-mono text-xs text-muted transition-colors hover:bg-surface hover:text-fg"
+      className="inline-flex h-11 min-w-11 items-center justify-center gap-1 rounded-md px-2 text-xs font-medium text-muted transition-colors hover:bg-surface hover:text-fg"
     >
       {locales.map((l, i) => (
         <span key={l} className={l === current ? "text-fg" : undefined}>

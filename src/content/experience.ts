@@ -1,44 +1,55 @@
 import type { Localized } from "@/i18n/config";
 
-// TODO: replace the placeholder experience with your own (most recent first).
-
-export type Experience = {
+export type Position = {
   role: Localized;
-  company: string;
-  location: Localized;
   start: string;
   /** Omit for the current position. */
   end?: string;
+};
+
+export type Experience = {
+  company: string;
+  location: Localized;
+  /** Roles held at the company, most recent first: add a new one on top for each promotion. */
+  positions: Position[];
   bullets: Localized<string[]>;
 };
 
 export const experience: Experience[] = [
   {
-    role: { pt: "Desenvolvedor Júnior I", en: "Junior Developer I" },
     company: "JSD Telecom",
     location: { pt: "João Pessoa, PB", en: "João Pessoa, Brazil" },
-    start: "2025",
+    positions: [
+      {
+        role: { pt: "Desenvolvedor Júnior I", en: "Junior Developer I" },
+        start: "2025",
+      },
+    ],
     bullets: {
       pt: [
-        "Desenvolvo features ponta a ponta em React, Node.js e PHP para diversos usuários.",
+        "Crio e melhoro funcionalidades dos sistemas da empresa, do que o usuário vê na tela ao que funciona nos bastidores.",
       ],
       en: [
-        "I develop end-to-end features using React, Node.js, and PHP for a variety of users.",
+        "I build and improve features in the company's systems, from what users see on screen to what runs behind the scenes.",
       ],
     },
   },
   {
-    role: { pt: "Desenvolvedor Backend", en: "Backend Developer" },
     company: "Fábrica de Software UBTech Office/Unipê",
     location: { pt: "João Pessoa, PB", en: "João Pessoa, Brazil" },
-    start: "Jan - 2023",
-    end: "Julh - 2023",
+    positions: [
+      {
+        role: { pt: "Desenvolvedor Backend", en: "Backend Developer" },
+        start: "Jan 2023",
+        end: "Jul 2023",
+      },
+    ],
     bullets: {
       pt: [
-        "Atuei no desenvolvimento de soluções de software voltadas para demandas reais de clientes, colaborando com a equipe da Fábrica de Software do UBTech Office/UNIPÊ.",
+        "Desenvolvi soluções para demandas reais de clientes, trabalhando em equipe na Fábrica de Software do UBTech Office/UNIPÊ.",
       ],
       en: [
-        "I worked on the development of software solutions tailored to real client needs, collaborating with the Software Factory team at the UBTech Office/UNIPÊ.",
+        "I built solutions for real client needs, working as part of the UBTech Office/UNIPÊ Software Factory team.",
       ],
     },
   },
